@@ -4,6 +4,17 @@ define(['jquery',  'template', 'nprogress', 'cookie'], function ($, template, NP
     NProgress.start();
     NProgress.done();
 
+    // Ajax Loading
+    $(document).ajaxStart(function () {
+        $('.overlay').show();
+    });
+
+    $(document).ajaxStop(function () {
+        setTimeout(function () {
+            $('.overlay').hide();
+        }, 300);
+    });
+
     // 检测用户是否登录，如果没有登录则跳转至登录页
 
     // 如何检测用户是否登录了呢？
@@ -59,7 +70,7 @@ define(['jquery',  'template', 'nprogress', 'cookie'], function ($, template, NP
         // 编译模板
         render = template.compile(source),
         // 传递数据
-        html = render(loginfo);
+        html = render(loginfo || {});
         
     // 将拼凑好数据的HTML添加至DOM
     $('.aside .profile').append(html);

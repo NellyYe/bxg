@@ -8,7 +8,19 @@ define(['jquery'], function () {
             .addClass('active')
             .parents('ul').show();
         },
-        qs: function () {},
-        show: function () {}
+        qs: function (key) {
+            // location.search 可以获取地址上的请求参数
+            // location.search;
+            var search = location.search.slice(1).split('&'),
+                o = {};
+
+            for(var i=0; i<search.length; i++) {
+                var temp = search[i].split('=');
+
+                o[temp[0]] = temp[1];
+            }
+
+            return o[key];
+        }
     }
 })
