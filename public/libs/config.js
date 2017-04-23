@@ -10,7 +10,10 @@ requirejs.config({
         form: 'assets/jquery-form/jquery.form',
         bootstrap: 'assets/bootstrap/js/bootstrap.min',
         datepicker: 'assets/bootstrap-datepicker/js/bootstrap-datepicker.min',
-        language: 'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
+        language: 'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        ckeditor: 'assets/ckeditor/ckeditor',
+        region: 'assets/jquery-region/jquery.region',
+        uploadify: 'assets/uploadify/jquery.uploadify.min'
     },
     shim: {
         validate: {
@@ -21,6 +24,12 @@ requirejs.config({
         },
         language: {
             deps: ['datepicker', 'jquery']
+        },
+        ckeditor: {
+            exports: 'CKEDITOR'
+        },
+        uploadify: {
+            deps: ['jquery']
         }
     }
 });
