@@ -13,7 +13,8 @@ requirejs.config({
         language: 'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         ckeditor: 'assets/ckeditor/ckeditor',
         region: 'assets/jquery-region/jquery.region',
-        uploadify: 'assets/uploadify/jquery.uploadify.min'
+        uploadify: 'assets/uploadify/jquery.uploadify.min',
+        Jcrop: 'assets/Jcrop/js/Jcrop.min'
     },
     shim: {
         validate: {
@@ -29,6 +30,9 @@ requirejs.config({
             exports: 'CKEDITOR'
         },
         uploadify: {
+            deps: ['jquery']
+        },
+        Jcrop: {
             deps: ['jquery']
         }
     }

@@ -551,6 +551,9 @@ a:focus {
   padding: 20px 0 40px;
   overflow: hidden;
 }
+.main .course-add .picture .up {
+  overflow: hidden;
+}
 .main .course-add .picture .preview {
   width: 400px;
   min-height: 160px;

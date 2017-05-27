@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <?php include "./views/layout/style.html"; ?>
+    <link rel="stylesheet" href="/public/assets/Jcrop/css/Jcrop.min.css">
+</head>
+<body>
+    <?php include "./views/layout/aside.html"; ?>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <?php include "./views/layout/header.html"; ?>
+            <div class="body course-add">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">课程管理</a></li>
+                    <li class="active">课程添加</li>
+                </ol>
+                <div class="steps" id="picture">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php include "./views/layout/scripts.html"; ?>
+    <script type="text/template" id="pictureTpl">
+        <!-- 摘要 -->
+        <div class="brief">
+            <div class="thumb">
+                {{if cs_cover}}
+                <img src="{{cs_cover}}" alt="">
+                {{/if}}
+            </div>
+            <dl class="info">
+                <dt>{{cs_name}}</dt>
+                {{if tc_name}}
+                <dd>讲师：{{tc_name}}</dd>
+                {{/if}}
+            </dl>
+        </div>
+        <!-- 步聚 -->
+        <ul class="forwards list-unstyled">
+            <li>
+                <a href="/course/basic?cs_id={{cs_id}}">
+                <b>1</b>
+                基本信息
+                </a>
+            </li>
+            <li>
+                <a href="/course/picture?cs_id={{cs_id}}" class="active">
+                <b>2</b>
+                课程图片
+                </a>
+            </li>
+            <li>
+                <a href="/course/chapter?cs_id={{cs_id}}">
+                <b>3</b>
+                课时管理
+                </a>
+            </li>
+        </ul>
+        <!-- 课程图片 -->
+        <div class="content">
+            <!-- 标题 -->
+            <div class="title">
+                <h5>课程图片 <small>COURSE PICTURE</small></h5>
+            </div>
+            <!-- 上传图片 -->
+            <div class="picture col-xs-offset-2">
+                <div class="preview">
+                    {{if cs_cover_original}}
+                    <img src="{{cs_cover_original}}" alt="">
+                    {{else}}
+                    <img src="/public/images/course.png" alt="">
+                    {{/if}}
+                </div>
+                <p class="tips">
+                    可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
+                </p>
+                <div class="col-xs-2 up">
+                    <a href="javascript:;" id="upfile" class="btn btn-success btn-sm">选择图片</a>
+                </div>
+                <div class="col-xs-2">
+                    {{if cs_cover_original}}
+                    <input type="button" id="cut" data-status="cut" class="btn btn-warning btn-sm" value="裁切图片">
+                    {{else}}
+                    <input type="button" id="cut" data-status="cut" class="btn btn-warning btn-sm" disabled value="裁切图片">
+                    {{/if}}
+                </div>
+                <!-- 记录裁切值 -->
+                <form id="coords" class="hide">
+                    <input type="text" name="cs_id" value="{{cs_id}}">
+                    <input type="text" name="x" id="x">
+                    <input type="text" name="y" id='y'>
+                    <input type="text" name="w" id="w">
+                    <input type="text" name="h" id="h">
+                </form>
+            </div>
+        </div>
+    </script>
+    <script>
+        require(['src/course/picture']);
+    </script>
+</body>
+</html>
